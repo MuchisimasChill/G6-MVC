@@ -8,10 +8,10 @@ use app\controllers\MainController;
 
 $app = new Application(dirname(__DIR__));
 
-$app->router->get('/','home');
+$app->router->get('/',[new MainController, 'home']);
 
-$app->router->get('/contact','contact');
+$app->router->get('/contact',[new MainController, 'contact']);
 
-$app->router->post('/contact', [\app\controllers\MainController::class, 'contact']);
+$app->router->post('/contact', [new MainController, 'activateContact']);
 
-$app->run();
+$app->run(); 

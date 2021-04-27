@@ -28,8 +28,7 @@ class Router
         $path = $this->request->getPath();
         $method = $this->request->getMethod();
         $recall = $this->routes[$method][$path] ?? false;
-        if ($recall === false) 
-        {
+        if ($recall === false) {
             $this->response->setCodeStatus(404);
             return $this->callView('_404');
         }
@@ -37,18 +36,12 @@ class Router
             return $this->callView($recall);
         }
         return call_user_func($recall);
-
-        
-    //   echo '<pre>';
-    //   var_dump($path);
-    //   echo '</pre>';
-    //   exit; 
    }
 
-    public function callView($view)
+    public function callView($view, $params = [])
     {
         $layoutContent = $this->layoutContent();
-        $viewContent = $this->callOnlyView($view);
+        $viewContent = $this->callOnlyView($view, $params);
         return str_replace('{{content}}',$viewContent,$layoutContent);
         //include_once Application::$ROOT_DIR . "/views/$view.php";
     }
@@ -67,8 +60,15 @@ class Router
         return ob_get_clean();
     }
 
-    protected function callOnlyView($view)
+    protected function callOnlyView($view, $params)
     {
+        foreach ($params as $key => $param) {
+            $$key = $param; 
+        }
+        echo '<pre>';
+        var_dump($name);
+        echo '</pre>';
+        exit; 
         ob_start();
         include_once Application::$ROOT_DIR . "/views/$view.php";
         return ob_get_clean();
