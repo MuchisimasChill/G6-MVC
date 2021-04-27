@@ -14,8 +14,14 @@ class Request
         }
         return substr($path, 0, $startPosition);
     }
+
     public function getMethod()
     {
         return strtolower($_SERVER['REQUEST_METHOD']); 
+    }
+
+    public function getBody()
+    {
+        # code...
     }
 }

@@ -35,6 +35,9 @@ class Router
         if (is_string($recall)) {
             return $this->callView($recall);
         }
+        if(is_array($recall)){
+            $recall[0] = new $recall[0]();
+        }
         return call_user_func($recall);
    }
 
@@ -65,10 +68,10 @@ class Router
         foreach ($params as $key => $param) {
             $$key = $param; 
         }
-        echo '<pre>';
-        var_dump($name);
-        echo '</pre>';
-        exit; 
+        // echo '<pre>';
+        // var_dump($name);
+        // echo '</pre>';
+        // exit; 
         ob_start();
         include_once Application::$ROOT_DIR . "/views/$view.php";
         return ob_get_clean();

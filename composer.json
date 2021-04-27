@@ -1,16 +1,15 @@
 {
-    "name": "admin/g6-mvc",
+    "name": "volodymyr/g6-mvc",
     "authors": [
         {
-            "name": "VladyslavArtomov",
-            "email": "vladyslav.artomov@gmail.com"
+            "name": "Volodymyr Zhydkykh",
+            "email": "zhydkykhv@gmail.com"
         }
     ],
     "autoload": {
-        "psr-4": {
-            "app\\":"./"
+        "psr-4":{
+            "app\\": "./"
         }
     },
     "require": {}
-
 }
