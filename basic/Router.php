@@ -38,7 +38,7 @@ class Router
         if(is_array($recall)){
             $recall[0] = new $recall[0]();
         }
-        return call_user_func($recall);
+        return call_user_func($recall, $this->request);
    }
 
     public function callView($view, $params = [])
@@ -46,7 +46,6 @@ class Router
         $layoutContent = $this->layoutContent();
         $viewContent = $this->callOnlyView($view, $params);
         return str_replace('{{content}}',$viewContent,$layoutContent);
-        //include_once Application::$ROOT_DIR . "/views/$view.php";
     }
 
     public function callContent($viewContent)
@@ -68,10 +67,6 @@ class Router
         foreach ($params as $key => $param) {
             $$key = $param; 
         }
-        // echo '<pre>';
-        // var_dump($name);
-        // echo '</pre>';
-        // exit; 
         ob_start();
         include_once Application::$ROOT_DIR . "/views/$view.php";
         return ob_get_clean();

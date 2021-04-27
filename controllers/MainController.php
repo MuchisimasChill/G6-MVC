@@ -3,6 +3,7 @@
 namespace app\controllers;
 use app\basic\Application;
 use app\basic\Controller;
+use app\basic\Request;
 
 class MainController extends Controller
 {
@@ -19,8 +20,13 @@ class MainController extends Controller
         return $this->call('contact');
     }
 
-    public function activateContact()
-    {
+    public function activateContact(Request $request)
+    { 
+        $body = $request->getBody();
+        echo '<pre>';
+        var_dump($body);
+        echo '</pre>';
+        exit;
         return 'Active data';
     }  
 }
