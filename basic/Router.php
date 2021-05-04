@@ -36,7 +36,8 @@ class Router
             return $this->callView($recall);
         }
         if(is_array($recall)){
-            $recall[0] = new $recall[0]();
+            Application::$app->controller = new $recall[0]();
+            $recall[0] = Application::$app->controller;
         }
         return call_user_func($recall, $this->request);
    }
@@ -57,8 +58,9 @@ class Router
 
     protected function layoutContent()
     {
+        $layout = Application::$app->controller->layout;
         ob_start();
-        include_once Application::$ROOT_DIR . "/views/layouts/mainLayout.php";
+        include_once Application::$ROOT_DIR . "/views/layouts/$layout.php";
         return ob_get_clean();
     }
 

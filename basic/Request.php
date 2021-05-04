@@ -20,6 +20,17 @@ class Request
         return strtolower($_SERVER['REQUEST_METHOD']); 
     }
 
+    public function isGetMethod()
+    {
+        return $this->getMethod() === 'get'; 
+    }
+
+    public function isPostMethod()
+    {
+        return $this->getMethod() === 'post'; 
+    }
+
+
     public function getBody()
     {
         $body = [];
