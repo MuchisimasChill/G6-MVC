@@ -78,12 +78,12 @@ abstract class Model
         ];
     }
 
-    public function isError($attr)
+    public function hasError($attr)
     {
         return $this->errors[$attr] ?? false;
     }
 
-    public function getFirstErrors($attr)
+    public function getFirstError($attr)
     {
         return $this->errors[$attr][0] ?? false;
     }

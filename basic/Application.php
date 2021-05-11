@@ -28,12 +28,12 @@ class Application
         echo $this->router->resolve();
     }
 
-    public function getController(): app\basic\Controller
+    public function getController(): Controller
     {
         return $this->controller;
     }
 
-    public function setController(app\basic\Controller $controller): void
+    public function setController(Controller $controller): void
     {
         $this->controller = $controller;
     }
