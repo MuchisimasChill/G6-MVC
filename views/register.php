@@ -6,7 +6,13 @@
   </div>
   <div class="mb-3">
     <label >FirstName </label>
-    <input name="first_name" type="text" class="form-control" >
+    <input name="first_name" type="text" 
+      value="<?php echo $model->first_name ?>" 
+      class="form-control <?php echo $model->isError('first_name') ? 'is-invalid' : ' ' ?>" 
+    >
+    <div class="invalid-feedback">
+      <?php echo $model->getFirstErrors('first_name') ?>
+    </div>
   </div>
   <div class="mb-3">
     <label >SecondName </label>

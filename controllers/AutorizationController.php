@@ -21,16 +21,16 @@ class AutorizationController extends Controller
         if ($request->isPostMethod())
         {    
             $registrationModel->loadData($request->getBody());
-            
-            echo '<pre>';
-            var_dump($registrationModel);
-            echo '</pre>';
-            exit;
 
             if($registrationModel->validate() && $registrationModel->register())
             {
-                return 'ty krut';
+                return 'register access';
             }
+
+            // echo '<pre>';
+            // var_dump($registrationModel->errors);
+            // echo '</pre>';
+            // exit;
 
             return $this->call("register",[
                 'model'=> $registrationModel
