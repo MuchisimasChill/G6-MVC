@@ -25,7 +25,7 @@ class Field
         return sprintf('
             <div class="mb-3">
                 <label>%s</label>
-                <input name="%s" value="%s" type="%s" class="form-control %s" >
+                <input name="%s" value="%s" type="%s" class="form-control%s" >
                 <div class="invalid-feedback">
                     %s
                 </div>
@@ -34,7 +34,7 @@ class Field
             $this->attr,
             $this->model->{$this->attr},
             $this->type,
-            $this-> model->hasError('first_name') ? 'is-invalid' : '',
+            $this-> model->hasError($this->attr) ? ' is-invalid' : '',
             $this->model->getFirstError($this->attr)
         );
     }

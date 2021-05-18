@@ -6,6 +6,7 @@ use app\basic\Application;
 class Controller
 {
     public string $layout = 'mainLayout';
+    
     public function setLayout($layout)
     {
        $this->layout = $layout;
