@@ -6,7 +6,18 @@ use app\basic\Application;
 use app\controllers\MainController;
 use app\controllers\AutorizationController;
 
-$app = new Application(dirname(__DIR__));
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
+$data = [
+    'db' => [
+        'dsn' => $_ENV['DB_DSN'],
+        'user' => $_ENV['DB_USER'],
+        'password' => $_ENV['DB_PASSWORD'],
+    ]
+];
+
+$app = new Application(dirname(__DIR__), $data);
 
 $app->router->get('/',[MainController::class, 'home']);
 

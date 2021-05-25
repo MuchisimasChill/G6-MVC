@@ -26,7 +26,7 @@ class MainController extends Controller
         echo '<pre>';
         var_dump($body);
         echo '</pre>';
-        exit;
+        // exit;
         return 'Active data';
     }  
 }
