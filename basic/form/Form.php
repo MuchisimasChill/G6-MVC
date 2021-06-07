@@ -6,7 +6,7 @@ class Form
 {
     public static function start($action, $method)
     {
-        printf('<form action="%s" method="%s" >', $action, $method);
+        printf('<form class="border rounded-3 p-3 bg-light" action="%s" method="%s" >', $action, $method);
         return new Form();
     }
 
