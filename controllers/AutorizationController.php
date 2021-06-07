@@ -27,11 +27,6 @@ class AutorizationController extends Controller
                 return 'register access';
             }
 
-            // echo '<pre>';
-            // var_dump($registrationModel->errors);
-            // echo '</pre>';
-            // exit;
-
             return $this->call("register",[
                 'model'=> $registrationModel
             ]);
